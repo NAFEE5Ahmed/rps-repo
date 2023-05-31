@@ -23,8 +23,7 @@ function gameEngine() {
           "Congratulations! You are the WINNER! because you won 5 times.";
         playAgainBtn.style.display = "block";
     playAgainBtn.classList.add("btn-animate");
-    computerWinUpdate.textContent="0"
-    playerWinUpdate.textContent="0"
+    playerWinUpdate.textContent=playerWins+1;
         return;
       }
       if (computerWins ===4) {
@@ -32,8 +31,7 @@ function gameEngine() {
         "System is the WINNER! because it won 5 times.";
         playAgainBtn.style.display = "block";
     playAgainBtn.classList.add("btn-animate");
-    computerWinUpdate.textContent="0"
-    playerWinUpdate.textContent="0"
+    computerWinUpdate.textContent=computerWins+1;
         return;
       }
       const computerSelection = getComputerChoice();
@@ -89,6 +87,8 @@ function playAgain() {
     playAgainBtn.style.display = "none";
     playAgainBtn.classList.remove("btn-animate");
     intro.style.display = "block";
+    computerWinUpdate.textContent = "0";
+    playerWinUpdate.textContent = "0";
   });
 }
 playAgain();
