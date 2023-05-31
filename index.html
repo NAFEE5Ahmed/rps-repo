@@ -1,13 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <script src="index.js" defer></script>
     <title>Rock_Paper_Scissors</title>
 </head>
+
 <body>
-    
+    <main>
+        <section id="gameSection" class="container">
+            <h1 class="main-heading">Welcome to Rock Paper Scissor Playground</h1>
+            <div class="score-card container">
+                <div class="cwu">
+                    <span>System Wins: </span><span id="computer-win-update">0</span>
+                </div>
+                <div class="pwu">
+                    <span>Player Wins: </span><span id="player-win-update">0</span>
+                </div>
+            </div>
+            <div class="player-choose">
+                 <button id="rock" class="player-selection"></button>
+                <button id="paper" class="player-selection"></button>
+                <button id="scissor" class="player-selection"></button>
+            </div> 
+            <div class="update">
+                <p id="intro" class="p-styling">Choose one of them to play. The one who wins 5 games will be the WINNER!</p>
+                <p id="game-update" class="p-styling"></p>
+                <button id="play-again-btn">Play Again</button>
+            </div>
+        </section>
+    </main>
 </body>
+
 </html>

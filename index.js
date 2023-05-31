@@ -1,64 +1,94 @@
-// const gameElement = ["rock", "paper", "scissor"];
-// function getComputerChoice() {
-//   return gameElement[Math.floor(Math.random() * gameElement.length)];
-// }
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissor = document.querySelector("#scissor");
+const intro = document.querySelector("#intro");
+const playerSelection = document.querySelectorAll(".player-selection");
+const computerWinUpdate = document.querySelector("#computer-win-update");
+const playerWinUpdate = document.querySelector("#player-win-update");
+const gameUpdate = document.querySelector("#game-update");
+const playAgainBtn = document.querySelector("#play-again-btn");
 
-// function playRound(playerSelection, computerSelection) {
-//   if (playerSelection === computerSelection) {
-//     return `Game tie`;
-//   } else if (playerSelection === "rock" && computerSelection === "paper") {
-//     return `You Lose! ${computerSelection} beats ${playerSelection}`;
-//   } else if (playerSelection === "rock" && computerSelection === "scissor") {
-//     return `You Win! ${playerSelection} beats ${computerSelection}`;
-//   } else if (playerSelection === "paper" && computerSelection === "scissor") {
-//     return `You Lose! ${computerSelection} beats ${playerSelection}`;
-//   } else if (playerSelection === "paper" && computerSelection === "rock") {
-//     return `You Win! ${playerSelection} beats ${computerSelection}`;
-//   } else if (playerSelection === "scissor" && computerSelection === "rock") {
-//     return `You Lose! ${computerSelection} beats ${playerSelection}`;
-//   } else if (playerSelection === "scissor" && computerSelection === "paper") {
-//     return `You Win! ${playerSelection} beats ${computerSelection}`;
-//   }
-// }
+function getComputerChoice() {
+  const gameElement = ["rock", "paper", "scissor"];
+  return gameElement[Math.floor(Math.random() * gameElement.length)];
+}
 
-// function game() {
-//   let playerWin = 0;
-//   let playerLose = 0;
-//   let computerWin = 0;
-//   let computerLose = 0;
-//   let tie = 0;
-//   let rounds =0;
-//   for (let i = 0; i < 5; i++) {
-//     const computerSelection = getComputerChoice();
-//     const playerSelection = prompt("Choose on of them\nRock, Paper or Scissor").toLowerCase();
-//     console.log(playRound(playerSelection, computerSelection));
-//     rounds++;
-//     if (playerSelection === computerSelection) {
-//       tie++;
-//     } else if (playerSelection === "rock" && computerSelection === "paper") {
-//       playerLose++;
-//       computerWin++;
-//     } else if (playerSelection === "rock" && computerSelection === "scissor") {
-//       playerWin++;
-//       computerLose++;
-//     } else if (playerSelection === "paper" && computerSelection === "scissor") {
-//       playerLose++;
-//       computerWin++;
-//     } else if (playerSelection === "paper" && computerSelection === "rock") {
-//       playerWin++;
-//       computerLose++;
-//     } else if (playerSelection === "scissor" && computerSelection === "rock") {
-//       playerLose++;
-//       computerWin++;
-//     } else if (playerSelection === "scissor" && computerSelection === "paper") {
-//       playerWin++;
-//       computerLose++;
-//     }else{
-//       alert("Please choose on of  them \n Rock, Paper or Scissor")
-//     }
-//   }
-//   console.log(`You wins ${playerWin} round and lose ${playerLose} round in a ${rounds} round game against computer`)
-//   console.log(`There is ${tie} tie in a ${rounds} round game`)
-//   console.log(`Computer wins ${computerWin} round and lose ${computerLose} in a ${rounds} round game against you`)
-// }
-// game();
+let playerWins = 0;
+let computerWins = 0;
+function gameEngine() {
+  playerSelection.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      if (playerWins ===4) {
+        gameUpdate.textContent =
+          "Congratulations! You are the WINNER! because you won 5 times.";
+        playAgainBtn.style.display = "block";
+    playAgainBtn.classList.add("btn-animate");
+    computerWinUpdate.textContent="0"
+    playerWinUpdate.textContent="0"
+        return;
+      }
+      if (computerWins ===4) {
+        gameUpdate.textContent =
+        "System is the WINNER! because it won 5 times.";
+        playAgainBtn.style.display = "block";
+    playAgainBtn.classList.add("btn-animate");
+    computerWinUpdate.textContent="0"
+    playerWinUpdate.textContent="0"
+        return;
+      }
+      const computerSelection = getComputerChoice();
+      intro.style.display = "none";
+      if (
+        (computerSelection === "rock" && e.target === rock) ||
+        (computerSelection === "paper" && e.target === paper) ||
+        (computerSelection === "scissor" && e.target === scissor)
+      ) {
+        gameUpdate.textContent = "It is a tie, NO one wins!";
+        gameUpdate.classList.toggle("update-animate");
+      } else if (e.target === rock && computerSelection === "paper") {
+        gameUpdate.textContent = `You LOSE! ${computerSelection} beats rock`;
+        gameUpdate.classList.toggle("update-animate");
+        computerWins++;
+        computerWinUpdate.textContent = computerWins;
+      } else if (e.target === rock && computerSelection === "scissor") {
+        gameUpdate.textContent = `You WIN! rock beats ${computerSelection}`;
+        gameUpdate.classList.toggle("update-animate");
+        playerWins++;
+        playerWinUpdate.textContent = playerWins;
+      } else if (e.target === paper && computerSelection === "scissor") {
+        gameUpdate.textContent = `You LOSE! ${computerSelection} beats paper`;
+        gameUpdate.classList.toggle("update-animate");
+        computerWins++;
+        computerWinUpdate.textContent = computerWins;
+      } else if (e.target === paper && computerSelection === "rock") {
+        gameUpdate.textContent = `You WIN! paper beats ${computerSelection}`;
+        gameUpdate.classList.toggle("update-animate");
+        playerWins++;
+        playerWinUpdate.textContent = playerWins;
+      } else if (e.target === scissor && computerSelection === "rock") {
+        gameUpdate.textContent = `You LOSE! ${computerSelection} beats scissor`;
+        gameUpdate.classList.toggle("update-animate");
+        computerWins++;
+        computerWinUpdate.textContent = computerWins;
+      } else if (e.target === scissor && computerSelection === "paper") {
+        gameUpdate.textContent = `You WIN! "scissor" beats ${computerSelection}`;
+        gameUpdate.classList.toggle("update-animate");
+        playerWins++;
+        playerWinUpdate.textContent = playerWins;
+      }
+    });
+  });
+}
+gameEngine();
+
+function playAgain() {
+  playAgainBtn.addEventListener("click", () => {
+    playerWins = 0;
+    computerWins = 0;
+    gameUpdate.textContent ="";
+    playAgainBtn.style.display = "none";
+    playAgainBtn.classList.remove("btn-animate");
+    intro.style.display = "block";
+  });
+}
+playAgain();

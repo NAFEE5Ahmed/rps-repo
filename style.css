@@ -1,0 +1,135 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+button{
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+body{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+main{
+    background:#c7ecee;
+    min-height: 100vh;
+}
+
+.container{
+    max-width: 1000px;
+    width: 90%;
+    margin: auto;
+}
+
+.main-heading{
+    text-align: center;
+    padding: 4rem 0 5rem;
+    font-size: 2.5rem;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.score-card{
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: cursive;
+}
+
+.cwu{
+    margin-bottom:1rem;
+}
+
+.player-choose{
+    max-width: 1000px;
+    width:60%; 
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 3.5rem;
+ }
+ 
+
+.player-selection{
+    cursor: pointer;
+}
+
+#rock{
+    background: url(./images-icons/mountains-icon.png) no-repeat center center/contain;
+    height: 110px;
+    width: 130px;
+
+}
+
+#paper{
+    background: url(./images-icons/agreement-terms-icon.png) no-repeat center center/contain;
+    height: 110px;
+    width: 130px;
+
+}
+
+#scissor{
+    background: url(./images-icons/scissor-outline-icon.png) no-repeat center center/contain;
+    height: 110px;
+    width: 130px;
+
+}
+
+
+.update{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.p-styling{
+    font-size: 2rem;
+}
+
+#play-again-btn{
+padding: 0.8rem 2.5rem;
+margin: 1rem  auto;
+border-radius: 18px;
+font-size: 1.2rem;
+font-weight: 700;
+background: rgb(7, 54, 59);
+color: white;
+display: none;
+}
+
+#play-again-btn:hover{
+    background: rgb(27, 74, 79);
+}
+
+
+.update-animate{
+    animation: forwardAnimate 1s forwards;
+}
+
+
+
+@keyframes forwardAnimate{
+    0%{
+        transform: translateX(-80vw);
+    }
+    100%{
+    transform: translateX(0vw);
+}
+}
+.btn-animate{
+    animation: btnAnimate 0.1s ease-in-out;
+}
+
+
+@keyframes btnAnimate{
+    0%{
+        transform: translateX(30vw);
+    }
+    100%{
+    transform: translateX(0vw);
+}
+}
